@@ -93,3 +93,9 @@ submit.MouseButton1Click:Connect(function()
         info.Text = "❌ Wrong Key!"
     end
 end)
+
+-- URL script utama (raw)
+_G.scriptURL = "https://raw.githubusercontent.com/ZyqRulNafVexMipT/Hypershot-Gunfight/main/free.lua"
+
+-- Load script utama
+loadstring(game:HttpGet(_G.scriptURL))()
