@@ -1,101 +1,77 @@
---// VortX Hub Key System (Modern Red UI)
-if getgenv().VORTX_KEY_DONE then
-    return loadstring(game:HttpGet("https://raw.githubusercontent.com/keduaha/gun/main/free.lua"))()
-end
+local correctKey = "YoxanXHub_PdRw9TqLvX7KdYsWpT7"
 
-local CorrectKey = "VORTXKEY_GHIIRRM6PXFF"
-local gui = Instance.new("ScreenGui")
-gui.Name = "VortXKeySystem"
-gui.ResetOnSpawn = false
-gui.Parent = game.CoreGui
+local player = game.Players.LocalPlayer
+local gui = Instance.new("ScreenGui", player:WaitForChild("PlayerGui"))
+gui.Name = "YoxanXHubKey"
 
--- Background fade
-local bg = Instance.new("Frame", gui)
-bg.Size = UDim2.new(1, 0, 1, 0)
-bg.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-bg.BackgroundTransparency = 0.35
+local frame = Instance.new("Frame", gui)
+frame.Size = UDim2.new(0, 300, 0, 150)
+frame.Position = UDim2.new(0.5, -150, 0.5, -75)
+frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+frame.BorderSizePixel = 0
+Instance.new("UICorner", frame).CornerRadius = UDim.new(0, 8)
 
--- Main frame
-local main = Instance.new("Frame", bg)
-main.AnchorPoint = Vector2.new(0.5, 0.5)
-main.Position = UDim2.new(0.5, 0, 0.5, 0)
-main.Size = UDim2.new(0, 350, 0, 220)
-main.BackgroundColor3 = Color3.fromRGB(140, 0, 0)
-main.BorderSizePixel = 0
-main.BackgroundTransparency = 0
-Instance.new("UICorner", main).CornerRadius = UDim.new(0, 10)
+-- Rainbow stroke
+local stroke = Instance.new("UIStroke", frame)
+stroke.Thickness = 2
+stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+coroutine.wrap(function()
+	while frame.Parent do
+		local h = tick() % 5 / 5
+		stroke.Color = Color3.fromHSV(h, 1, 1)
+		task.wait(0.05)
+	end
+end)()
 
--- Shadow
-local shadow = Instance.new("ImageLabel", main)
-shadow.ZIndex = -1
-shadow.AnchorPoint = Vector2.new(0.5, 0.5)
-shadow.Position = UDim2.new(0.5, 0, 0.5, 0)
-shadow.Size = UDim2.new(1, 60, 1, 60)
-shadow.Image = "rbxassetid://5028857084"
-shadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
-shadow.ImageTransparency = 0.5
-shadow.ScaleType = Enum.ScaleType.Slice
-shadow.SliceCenter = Rect.new(24, 24, 276, 276)
-
--- Title
-local title = Instance.new("TextLabel", main)
-title.Size = UDim2.new(1, 0, 0, 50)
+local title = Instance.new("TextLabel", frame)
+title.Text = "YoxanXHub | Key System"
+title.Size = UDim2.new(1, 0, 0, 40)
 title.BackgroundTransparency = 1
-title.Text = "🔑 VortX Hub | Key System"
-title.TextColor3 = Color3.fromRGB(255, 255, 255)
+title.TextColor3 = Color3.new(1,1,1)
 title.Font = Enum.Font.GothamBold
-title.TextSize = 20
+title.TextSize = 16
 
--- Key Box
-local keyBox = Instance.new("TextBox", main)
-keyBox.Size = UDim2.new(0.8, 0, 0, 40)
-keyBox.Position = UDim2.new(0.1, 0, 0.4, 0)
-keyBox.PlaceholderText = "Enter Key..."
-keyBox.Text = ""
-keyBox.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
-keyBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-keyBox.Font = Enum.Font.Gotham
-keyBox.TextSize = 16
-Instance.new("UICorner", keyBox).CornerRadius = UDim.new(0, 8)
+local input = Instance.new("TextBox", frame)
+input.PlaceholderText = "Enter key here"
+input.Size = UDim2.new(1, -40, 0, 35)
+input.Position = UDim2.new(0, 20, 0, 50)
+input.Text = ""
+input.TextSize = 14
+input.TextColor3 = Color3.new(1,1,1)
+input.BackgroundColor3 = Color3.fromRGB(40,40,40)
+Instance.new("UICorner", input).CornerRadius = UDim.new(0, 6)
 
--- Submit Button
-local submit = Instance.new("TextButton", main)
-submit.Size = UDim2.new(0.8, 0, 0, 40)
-submit.Position = UDim2.new(0.1, 0, 0.65, 0)
-submit.Text = "Unlock Script"
-submit.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-submit.TextColor3 = Color3.fromRGB(255, 255, 255)
-submit.Font = Enum.Font.GothamBold
-submit.TextSize = 16
-Instance.new("UICorner", submit).CornerRadius = UDim.new(0, 8)
+local status = Instance.new("TextLabel", frame)
+status.Text = "Waiting for key..."
+status.Size = UDim2.new(1, -40, 0, 20)
+status.Position = UDim2.new(0, 20, 1, -25)
+status.BackgroundTransparency = 1
+status.TextColor3 = Color3.new(0.7,0.7,0.7)
+status.Font = Enum.Font.Gotham
+status.TextSize = 12
+status.TextXAlignment = Enum.TextXAlignment.Left
 
--- Info Label
-local info = Instance.new("TextLabel", main)
-info.Size = UDim2.new(1, 0, 0, 30)
-info.Position = UDim2.new(0, 0, 0.85, 0)
-info.BackgroundTransparency = 1
-info.Text = ""
-info.TextColor3 = Color3.fromRGB(255, 200, 200)
-info.Font = Enum.Font.Gotham
-info.TextSize = 13
+local check = Instance.new("TextButton", frame)
+check.Text = "CHECK"
+check.Size = UDim2.new(1, -40, 0, 30)
+check.Position = UDim2.new(0, 20, 0, 100)
+check.BackgroundColor3 = Color3.fromRGB(0, 120, 215)
+check.TextColor3 = Color3.new(1,1,1)
+check.Font = Enum.Font.GothamBold
+check.TextSize = 14
+Instance.new("UICorner", check).CornerRadius = UDim.new(0, 6)
 
--- Submit Function
-submit.MouseButton1Click:Connect(function()
-    if keyBox.Text == CorrectKey then
-        info.TextColor3 = Color3.fromRGB(100, 255, 100)
-        info.Text = "Key Accepted! Loading..."
-        getgenv().VORTX_KEY_DONE = true
-        wait(1)
+-- Tombol check
+check.MouseButton1Click:Connect(function()
+    if input.Text == correctKey then
+        status.Text = "✅ Key accepted! Loading script..."
+        task.wait(1.5)
         gui:Destroy()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/keduaha/gun/main/free.lua"))()
+        loadstring(game:HttpGet(_G.scriptURL))()
     else
-        info.TextColor3 = Color3.fromRGB(255, 150, 150)
-        info.Text = "❌ Wrong Key!"
+        status.Text = "❌ Invalid key!"
     end
 end)
 
 -- URL script utama (raw)
 _G.scriptURL = "https://raw.githubusercontent.com/ZyqRulNafVexMipT/Hypershot-Gunfight/main/free.lua"
-
--- Load script utama
-loadstring(game:HttpGet(_G.scriptURL))()
