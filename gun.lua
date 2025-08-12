@@ -2,7 +2,7 @@ local correctKey = "VORTXKEY_GHIIRRM6PXFF"
 
 local player = game.Players.LocalPlayer
 local gui = Instance.new("ScreenGui", player:WaitForChild("PlayerGui"))
-gui.Name = "VortXHubKey"
+gui.Name = "YoxanXHubKey"
 
 local frame = Instance.new("Frame", gui)
 frame.Size = UDim2.new(0, 300, 0, 150)
