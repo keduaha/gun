@@ -1,4 +1,4 @@
-local correctKey = "bdeTxjqKOUshqdoHjeTLbygvxyeJfhBT"
+local correctKey = "4b058968a978fa787d3a9e26d"
 
 local player = game.Players.LocalPlayer
 local gui = Instance.new("ScreenGui", player:WaitForChild("PlayerGui"))
@@ -24,7 +24,7 @@ coroutine.wrap(function()
 end)()
 
 local title = Instance.new("TextLabel", frame)
-title.Text = "YoxanXHub | Key System"
+title.Text = "VortX Hub| Key System"
 title.Size = UDim2.new(1, 0, 0, 40)
 title.BackgroundTransparency = 1
 title.TextColor3 = Color3.new(1,1,1)
@@ -74,4 +74,4 @@ check.MouseButton1Click:Connect(function()
 end)
 
 -- URL script utama (raw)
-_G.scriptURL = "raw.githubusercontent.com/ZyqRulNafVexMipT/Hypershot-Gunfight/main/free.lua"
+_G.scriptURL = "https://raw.githubusercontent.com/ZyqRulNafVexMipT/Hypershot-Gunfight/main/free.lua"
