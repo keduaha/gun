@@ -75,4 +75,3 @@ end)
 
 -- URL script utama (raw)
 _G.scriptURL = "raw.githubusercontent.com/ZyqRulNafVexMipT/Hypershot-Gunfight/main/free.lua"
-"
