@@ -1,4 +1,4 @@
-local correctKey = "4b058968a978fa787d3a9e26d"
+local correctKey = "VortXHub_PdRw9TqLvX7KdYsWpT7"
 
 local player = game.Players.LocalPlayer
 local gui = Instance.new("ScreenGui", player:WaitForChild("PlayerGui"))
